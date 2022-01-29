@@ -74,15 +74,13 @@ namespace Tests
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Second set of groups")]
-        [NUnit.Framework.CategoryAttribute("tag1")]
-        public virtual void SecondSetOfGroups()
+        [NUnit.Framework.DescriptionAttribute("One set of groups")]
+        public virtual void OneSetOfGroups()
         {
-            string[] tagsOfScenario = new string[] {
-                    "tag1"};
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Second set of groups", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 6
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("One set of groups", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 5
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -112,7 +110,7 @@ this.ScenarioInitialize(scenarioInfo);
                             "Caleb"});
                 table1.AddRow(new string[] {
                             "Daniel"});
-#line 7
+#line 6
  testRunner.Given("the following students", ((string)(null)), table1, "Given ");
 #line hidden
                 TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
@@ -124,10 +122,10 @@ this.ScenarioInitialize(scenarioInfo);
                 table2.AddRow(new string[] {
                             "Caleb",
                             "Daniel"});
-#line 13
+#line 12
  testRunner.And("group set 1 was", ((string)(null)), table2, "And ");
 #line hidden
-#line 17
+#line 16
  testRunner.When("I go to set up group set 2", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
                 TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
@@ -136,7 +134,7 @@ this.ScenarioInitialize(scenarioInfo);
                             "Caleb"});
                 table3.AddRow(new string[] {
                             "Daniel"});
-#line 18
+#line 17
  testRunner.Then("Adam can work with", ((string)(null)), table3, "Then ");
 #line hidden
                 TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
@@ -145,8 +143,93 @@ this.ScenarioInitialize(scenarioInfo);
                             "Adam"});
                 table4.AddRow(new string[] {
                             "Benjamin"});
-#line 22
+#line 21
  testRunner.And("Caleb can work with", ((string)(null)), table4, "And ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Two sets of groups")]
+        public virtual void TwoSetsOfGroups()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Two sets of groups", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 26
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+                TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Name"});
+                table5.AddRow(new string[] {
+                            "Adam"});
+                table5.AddRow(new string[] {
+                            "Benjamin"});
+                table5.AddRow(new string[] {
+                            "Caleb"});
+                table5.AddRow(new string[] {
+                            "Daniel"});
+#line 27
+ testRunner.Given("the following students", ((string)(null)), table5, "Given ");
+#line hidden
+                TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Member1",
+                            "Member2"});
+                table6.AddRow(new string[] {
+                            "Adam",
+                            "Benjamin"});
+                table6.AddRow(new string[] {
+                            "Caleb",
+                            "Daniel"});
+#line 33
+ testRunner.And("group set 1 was", ((string)(null)), table6, "And ");
+#line hidden
+                TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Member1",
+                            "Member2"});
+                table7.AddRow(new string[] {
+                            "Adam",
+                            "Caleb"});
+                table7.AddRow(new string[] {
+                            "Benjamin",
+                            "Daniel"});
+#line 37
+ testRunner.And("group set 2 was", ((string)(null)), table7, "And ");
+#line hidden
+#line 41
+ testRunner.When("I go to set up group set 3", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+                TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Possible Partners"});
+                table8.AddRow(new string[] {
+                            "Daniel"});
+#line 42
+ testRunner.Then("Adam can work with", ((string)(null)), table8, "Then ");
+#line hidden
+                TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Possible Partners"});
+                table9.AddRow(new string[] {
+                            "Benjamin"});
+#line 45
+ testRunner.And("Caleb can work with", ((string)(null)), table9, "And ");
 #line hidden
             }
             this.ScenarioCleanup();

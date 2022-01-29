@@ -1,4 +1,6 @@
+using FluentAssertions;
 using Logic;
+using System.Collections.Generic;
 using System.Linq;
 using TechTalk.SpecFlow;
 
@@ -52,8 +54,9 @@ public class Steps
             {
                 group.Members.Add(grouper.Students.Single(s => s.Name == member));
             }
+            assignment.Groups.Add(group);
         }
-        context.Add(assignment.Name, assignment);
+        grouper.Assignments.Add(assignment);
     }
 
     [When(@"I go to set up group set (.*)")]
@@ -61,17 +64,17 @@ public class Steps
     {
         var grouper = getGrouper();
         var possibilities = grouper.CalculateNextGroups();
+        context.Add("possibilities", possibilities);
     }
 
-    [Then(@"Adam can work with")]
-    public void ThenAdamCanWorkWith(Table table)
+    [Then(@"(.*) can work with")]
+    public void Then_____CanWorkWith(string studentName, Table table)
     {
-        throw new PendingStepException();
-    }
+        var possibilities = context.Get<Dictionary<Student, IEnumerable<Student>>>("possibilities");
+        var grouper = getGrouper();
+        var student = grouper.Students.Single(s => s.Name == studentName);
+        var expectedPossiblePartners = table.Rows.Select(name => grouper.Students.Single(s => s.Name == name[0]));
 
-    [Then(@"Caleb can work with")]
-    public void ThenCalebCanWorkWith(Table table)
-    {
-        throw new PendingStepException();
+        possibilities[student].Should().OnlyContain(s => expectedPossiblePartners.Contains(s));
     }
 }
