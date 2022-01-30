@@ -35,6 +35,21 @@ public class Grouper
         });
     }
 
+    public void AddAssignment(string name, IEnumerable<IEnumerable<string>> groups)
+    {
+        var assignment = new Assignment { Id = Assignments.Count, Name = name };
+        foreach (var group in groups)
+        {
+            assignment.Groups.Add(new Group
+            {
+                Id = assignment.Groups.Count,
+                Name = $"Group {assignment.Groups.Count}",
+                Members = group.Select(name => Students.Single(s => s.Name == name)).ToList()
+            });
+        }
+        Assignments.Add(assignment);
+    }
+
     public Dictionary<Student, IEnumerable<Student>> CalculateNextGroups()
     {
         var possibilities = new Dictionary<Student, IEnumerable<Student>>();

@@ -37,26 +37,7 @@ public class Steps
     public void GivenGroupSetWas(int groupNumber, Table table)
     {
         var grouper = getGrouper();
-        var assignment = new Assignment()
-        {
-            Id = groupNumber,
-            Name = $"Assignment {groupNumber}"
-        };
-        int groupNum = 1;
-        foreach (var row in table.Rows)
-        {
-            var group = new Group
-            {
-                Id = groupNum,
-                Name = $"Group {groupNum++}"
-            };
-            foreach (var member in row.Values)
-            {
-                group.Members.Add(grouper.Students.Single(s => s.Name == member));
-            }
-            assignment.Groups.Add(group);
-        }
-        grouper.Assignments.Add(assignment);
+        grouper.AddAssignment($"Group {groupNumber}", table.Rows.Select(row => row.Values.ToArray()).ToArray());
     }
 
     [When(@"I go to set up group set (.*)")]
