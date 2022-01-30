@@ -75,6 +75,6 @@ public class Steps
         var student = grouper.Students.Single(s => s.Name == studentName);
         var expectedPossiblePartners = table.Rows.Select(name => grouper.Students.Single(s => s.Name == name[0]));
 
-        possibilities[student].Should().OnlyContain(s => expectedPossiblePartners.Contains(s));
+        possibilities[student].Should().BeEquivalentTo(expectedPossiblePartners);
     }
 }

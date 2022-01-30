@@ -46,3 +46,57 @@ Scenario: Two sets of groups
 	| Possible Partners |
 	| Benjamin          |
 
+Scenario: One set of three-member groups
+	Given the following students
+	| Name     |
+	| Adam     |
+	| Benjamin |
+	| Caleb    |
+	| Daniel   |
+	| Ephraim  |
+	| Frank    |
+	And group set 1 was
+	| Member1 | Member2  | Member3 |
+	| Adam    | Benjamin | Caleb   |
+	| Daniel  | Ephraim  | Frank   |
+	When I go to set up group set 2
+	Then Adam can work with
+	| Possible Partners |
+	| Daniel            |
+	| Ephraim           |
+	| Frank             |
+	And Daniel can work with
+	| Possible Partners |
+	| Adam              |
+	| Benjamin          |
+	| Caleb             |
+
+Scenario: Two sets of three-member groups
+	Given the following students
+	| Name     |
+	| Adam     |
+	| Benjamin |
+	| Caleb    |
+	| Daniel   |
+	| Ephraim  |
+	| Frank    |
+	And group set 1 was
+	| Member1 | Member2  | Member3 |
+	| Adam    | Benjamin | Caleb   |
+	| Daniel  | Ephraim  | Frank   |
+	And group set 2 was
+	| Member1  | Member2 | Member3 |
+	| Adam     | Daniel  | Ephraim |
+	| Benjamin | Caleb   | Frank   |
+	When I go to set up group set 2
+	Then Adam can work with
+	| Possible Partners |
+	| Frank             |
+	And Benjamin can work with
+	| Possible Partners |
+	| Ephraim           |
+	| Frank             |
+	And Caleb can work with
+	| Possible Partners |
+	| Daniel            |
+	| Ephraim           |
