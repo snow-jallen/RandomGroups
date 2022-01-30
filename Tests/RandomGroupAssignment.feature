@@ -94,8 +94,8 @@ Scenario: Two sets of three-member groups
 	| Frank             |
 	And Benjamin can work with
 	| Possible Partners |
+	| Daniel            |
 	| Ephraim           |
-	| Frank             |
 	And Caleb can work with
 	| Possible Partners |
 	| Daniel            |

@@ -410,9 +410,9 @@ this.ScenarioInitialize(scenarioInfo);
                 TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
                             "Possible Partners"});
                 table18.AddRow(new string[] {
-                            "Ephraim"});
+                            "Daniel"});
                 table18.AddRow(new string[] {
-                            "Frank"});
+                            "Ephraim"});
 #line 95
  testRunner.And("Benjamin can work with", ((string)(null)), table18, "And ");
 #line hidden

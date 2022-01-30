@@ -21,12 +21,6 @@ public record Student
     public string Name { get; set; }
 }
 
-public class Membership
-{
-    public Group Group { get; set; }
-    public Student Student { get; set; }
-}
-
 public class Grouper
 {
     public ICollection<Student> Students { get; set; } = new List<Student>();
