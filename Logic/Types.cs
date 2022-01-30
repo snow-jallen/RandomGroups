@@ -43,7 +43,7 @@ public class Grouper
             var previousPartners = (from a in Assignments
                                     from g in a.Groups
                                     where g.ContainsStudent(student)
-                                    select g.MembersExcept(student)).SelectMany(x => x);
+                                    select g.MembersExcept(student)).SelectMany(x => x).Distinct();
 
             var possiblePartners = from s in Students
                                    where s != student && !previousPartners.Contains(s)
