@@ -1,9 +1,56 @@
 ﻿@page "/"
+@using Logic
 
-<PageTitle>Index</PageTitle>
+<PageTitle>Grouper</PageTitle>
 
-<h1>Hello, world!</h1>
+<h1>Group Assignments</h1>
 
-Welcome to your new app.
+<label>
+    Data
+    <input @bind="Contents"  />
+</label>
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+@if (possibilities?.Any() ?? false)
+{
+    <select onchange=@showStudent>
+        @foreach (var student in possibilities.Keys)
+        {
+            <option value=@student>@student.Name</option>
+        }
+    </select>
+}
+
+@if((possibilities?.Any() ?? false) && selectedStudent != null)
+{
+    <h5>Possible Partners:</h5>
+    <ul>
+    foreach(var other in possibilities[selectedStudent])
+    {
+        <li>@other.Name</li>
+    }
+    </ul>
+}
+
+
+
+@code {
+    private string contents;
+    public string Contents
+    {
+        get => Contents;
+        set
+        {
+            contents = value;
+            var grouper = Grouper.Parse(value.Split(Environment.NewLine));
+            possibilities = grouper.CalculateNextGroups();
+        }
+    }
+
+    private Dictionary<Student, IEnumerable<Student>> possibilities;
+    private Student? selectedStudent;
+
+    private void showStudent(ChangeEventArgs e)
+    {
+        selectedStudent = e.Value as Student;
+    }
+}

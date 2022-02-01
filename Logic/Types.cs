@@ -80,4 +80,28 @@ public class Grouper
         }
         return possibilities;
     }
+
+    public static Grouper Parse(string[] contents)
+    {
+        var grouper = new Grouper();
+        foreach (var student in contents.First().Split(',', StringSplitOptions.RemoveEmptyEntries))
+        {
+            grouper.AddStudent(student);
+        }
+
+        for (int i = 2; i < contents.Length; i++)
+        {
+            if (contents[i].Trim() == String.Empty)
+                continue;
+
+            var assignmentName = contents[i++].Trim();
+            var groups = new List<IEnumerable<string>>();
+            while (i < contents.Length && contents[i].Trim() != String.Empty)
+            {
+                groups.Add(contents[i++].Split(',', StringSplitOptions.RemoveEmptyEntries));
+            }
+            grouper.AddAssignment(assignmentName, groups);
+        }
+        return grouper;
+    }
 }
