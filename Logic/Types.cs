@@ -84,7 +84,9 @@ public class Grouper
     public static Grouper Parse(string[] contents)
     {
         var grouper = new Grouper();
-        foreach (var student in contents.First().Split(',', StringSplitOptions.RemoveEmptyEntries))
+        foreach (var student in contents.First()
+                                        .Split(',', StringSplitOptions.RemoveEmptyEntries)
+                                        .OrderBy(s => s))
         {
             grouper.AddStudent(student);
         }

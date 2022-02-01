@@ -1,0 +1,51 @@
+﻿@using Logic
+
+<h1>Group Assignments</h1>
+
+<label class="form-label">
+    Data
+</label>
+<textarea class="form-control" rows=15 cols=60 @bind="Contents" />
+
+
+@if (possibilities?.Any() ?? false)
+{
+    <label class="form-label">Select a Student</label>
+    <select @bind=selectedStudentId class="form-control">
+        @foreach (var student in possibilities.Keys)
+        {
+            <option value=@student.Id>@student.Name</option>
+        }
+    </select>
+
+    @if (selectedStudent != null)
+    {
+        <h5>@selectedStudent.Name's Possible Partners:</h5>
+        <ul>
+            @foreach (var other in possibilities[selectedStudent])
+            {
+                <li>@other.Name</li>
+            }
+        </ul>
+    }
+}
+
+@code {
+    private string contents;
+    public string Contents
+    {
+        get => contents;
+        set
+        {
+            contents = value;
+            var lines = contents.Split('\n');
+            var grouper = Grouper.Parse(lines);
+            possibilities = grouper.CalculateNextGroups();
+        }
+    }
+
+    private Dictionary<Student, IEnumerable<Student>> possibilities;
+    private int selectedStudentId;
+    private Student? selectedStudent => possibilities.Keys.Single(s => s.Id == selectedStudentId);
+
+}
