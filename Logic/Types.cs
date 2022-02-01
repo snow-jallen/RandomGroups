@@ -35,6 +35,18 @@ public class Grouper
         });
     }
 
+    private Student findStudent(string name)
+    {
+        try
+        {
+            return Students.Single(s => s.Name == name);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Unable to locate {name} in the list of students.", ex);
+        }
+    }
+
     public void AddAssignment(string name, IEnumerable<IEnumerable<string>> groups)
     {
         var assignment = new Assignment { Id = Assignments.Count, Name = name };
@@ -44,7 +56,7 @@ public class Grouper
             {
                 Id = assignment.Groups.Count,
                 Name = $"Group {assignment.Groups.Count}",
-                Members = group.Select(name => Students.Single(s => s.Name == name)).ToList()
+                Members = group.Select(name => findStudent(name)).ToList()
             });
         }
         Assignments.Add(assignment);

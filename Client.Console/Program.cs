@@ -1,10 +1,10 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using Logic;
 
-var contents = File.ReadAllLines("data.txt").ToArray();
+var contents = File.ReadAllLines("cs1415.txt").ToArray();
 
 var grouper = new Grouper();
-foreach (var student in contents.First().Split(','))
+foreach (var student in contents.First().Split(',', StringSplitOptions.RemoveEmptyEntries))
 {
     grouper.AddStudent(student);
 }
@@ -18,7 +18,7 @@ for (int i = 2; i < contents.Length; i++)
     var groups = new List<IEnumerable<string>>();
     while (i < contents.Length && contents[i].Trim() != String.Empty)
     {
-        groups.Add(contents[i++].Split(','));
+        groups.Add(contents[i++].Split(',', StringSplitOptions.RemoveEmptyEntries));
     }
     grouper.AddAssignment(assignmentName, groups);
 }
