@@ -7,7 +7,6 @@
 </label>
 <textarea class="form-control" rows=15 cols=60 @bind="Contents" />
 
-
 @if (possibilities?.Any() ?? false)
 {
     <label class="form-label">Select a Student</label>
@@ -38,8 +37,7 @@
         set
         {
             contents = value;
-            var lines = contents.Split('\n');
-            var grouper = Grouper.Parse(lines);
+            var grouper = Grouper.Parse(contents.Split('\n'));
             possibilities = grouper.CalculateNextGroups();
         }
     }
@@ -47,5 +45,4 @@
     private Dictionary<Student, IEnumerable<Student>> possibilities;
     private int selectedStudentId;
     private Student? selectedStudent => possibilities.Keys.Single(s => s.Id == selectedStudentId);
-
 }
