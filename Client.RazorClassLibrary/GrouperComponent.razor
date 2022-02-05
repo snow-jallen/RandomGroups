@@ -2,16 +2,15 @@
 
 <h1>Group Assignments</h1>
 
-<label class="form-label">
+<label class="form-label h5">
     Data
 </label>
 <textarea class="form-control" rows=15 cols=60 @bind="Contents" />
 
-
 @if (possibilities?.Any() ?? false)
 {
-    <label class="form-label">Select a Student</label>
-    <select @bind=selectedStudentId class="form-control">
+    <label class="form-label h5 mt-2">Select a Student</label>
+    <select @bind=selectedStudentId class="form-select">
         @foreach (var student in possibilities.Keys)
         {
             <option value=@student.Id>@student.Name</option>
@@ -20,7 +19,7 @@
 
     @if (selectedStudent != null)
     {
-        <h5>@selectedStudent.Name's Possible Partners:</h5>
+        <div class="h5 mt-2">@selectedStudent.Name's Possible Partners:</div>
         <ul>
             @foreach (var other in possibilities[selectedStudent])
             {

@@ -100,3 +100,33 @@ Scenario: Two sets of three-member groups
 	| Possible Partners |
 	| Daniel            |
 	| Ephraim           |
+
+Scenario: Current group, special handling
+	Given the following students
+	| Name     |
+	| Adam     |
+	| Benjamin |
+	| Caleb    |
+	| Daniel   |
+	| Ephraim  |
+	| Frank    |
+	And group set 1 was
+	| Member1 | Member2  | Member3 |
+	| Adam    | Benjamin | Caleb   |
+	| Daniel  | Ephraim  | Frank   |
+	And group set 2 was
+	| Member1  | Member2 | Member3 |
+	| Adam     | Daniel  | Ephraim |
+	| Benjamin | Caleb   | Frank   |
+	When I go to set up group set 2
+	Then Adam can work with
+	| Possible Partners |
+	| Frank             |
+	And Benjamin can work with
+	| Possible Partners |
+	| Daniel            |
+	| Ephraim           |
+	And Caleb can work with
+	| Possible Partners |
+	| Daniel            |
+	| Ephraim           |
