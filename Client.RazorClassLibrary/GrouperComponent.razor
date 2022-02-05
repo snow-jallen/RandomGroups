@@ -37,8 +37,7 @@
         set
         {
             contents = value;
-            var lines = contents.Split('\n');
-            var grouper = Grouper.Parse(lines);
+            var grouper = Grouper.Parse(contents.Split('\n'));
             possibilities = grouper.CalculateNextGroups();
         }
     }
@@ -46,5 +45,4 @@
     private Dictionary<Student, IEnumerable<Student>> possibilities;
     private int selectedStudentId;
     private Student? selectedStudent => possibilities.Keys.Single(s => s.Id == selectedStudentId);
-
 }

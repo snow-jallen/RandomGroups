@@ -48,3 +48,16 @@ Sarah,Enoch
 Seth,Harry
 Solange,Marco
 Steven,Parker
+
+Lab04
+Parker,Ryker
+Seth,Steven
+Anthony,Christopher
+Mustafa,Karter
+Max,Dusty
+Danielle,Benson
+Josh,Enoch
+Cassandra,Lucas
+Sarah,Solange
+Ethan,Harry
+Marco,Ronald
